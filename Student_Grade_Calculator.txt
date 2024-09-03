@@ -1,0 +1,212 @@
+import java.io.*;
+import java.util.*;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+public class studentgradecal
+{
+    public static void main(String args[])
+    {
+        final JFrame f = new JFrame();
+       //LABELCREATION
+        final JLabel l1 = new JLabel();
+        l1.setBounds(50,50,75,25);
+        l1.setText("TAMIL");
+
+        final JLabel l2 = new JLabel();
+        l2.setBounds(50,100,75,25);
+        l2.setText("ENGLISH");
+
+        final JLabel l3 = new JLabel();
+        l3.setBounds(50,150,75,25);
+        l3.setText("MATHS ");
+
+        final JLabel l4 = new JLabel();
+        l4.setBounds(50,200,75,25);
+        l4.setText("SCIENCE");
+
+        final JLabel l5 = new JLabel();
+        l5.setBounds(50,250,75,25);
+        l5.setText("SOCIAL");
+
+        final JLabel l6 = new JLabel();
+        l6.setBounds(250,100,75,25);
+        l6.setText("TOTAL");
+        
+        final JLabel l7 = new JLabel();
+        l7.setBounds(250,150,75,25);
+        l7.setText("AVERAGE%");
+        
+        final JLabel l8 = new JLabel();
+        l8.setBounds(250,200,75,25);
+        l8.setText("GRADE");
+
+        final JLabel l9 = new JLabel();
+        l9.setBounds(250,50,75,25);
+        l9.setText("CLASS");
+
+        final JLabel l10 = new JLabel();
+        l10.setBounds(375,325,100,25);
+        l10.setText("BY SUBIKSHA");
+
+        final JLabel lt = new JLabel();
+        lt.setBounds(175,15,300,25);
+        lt.setText("GRADE CALCULATOR");
+        Font boldFont = new Font("Times of Roman", Font.BOLD, 16);
+        lt.setFont(boldFont);
+      
+        //TEXTFIELD CREATION
+        final JTextField t1 = new JTextField();
+        t1.setBounds(125,50,100,25);
+        
+        final JTextField t2 = new JTextField();
+        t2.setBounds(125,100,100,25);
+
+        final JTextField t3 = new JTextField();
+        t3.setBounds(125,150,100,25);
+
+        final JTextField t4 = new JTextField();
+        t4.setBounds(125,200,100,25);
+
+        final JTextField t5 = new JTextField();
+        t5.setBounds(125,250,100,25);
+
+        final JTextField t6 = new JTextField();
+        t6.setBounds(325,100,100,25);
+
+        final JTextField t7 = new JTextField();
+        t7.setBounds(325,150,100,25);
+
+        final JTextField t8 = new JTextField();
+        t8.setBounds(325,200,100,25);
+
+        //combobox creation
+        final Choice cm = new Choice();
+        cm.add("I");
+        cm.add("II");
+        cm.add("III");
+        cm.add("IV");
+        cm.add("V");
+        cm.add("VI");
+        cm.add("VII");
+        cm.add("VIII");
+        cm.add("IX");
+        cm.add("X");
+        cm.setBounds(325,50,100,25);
+
+        //BUTTON CREATION
+        final JButton b1 = new JButton();
+        b1.setText("CALCULATE");
+        b1.setBounds(150,300,125,25);
+        b1.setBackground(Color.yellow);
+        b1.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent AE)
+            {
+            try
+            {
+            String d1,d2,d3,d4,d5,total,average;
+            d1 = t1.getText();
+            d2 = t2.getText();
+            d3 = t3.getText();
+            d4 = t4.getText();
+            d5 = t5.getText();
+            int a,b,c,d,e;
+            a = Integer.parseInt(d1);
+            b = Integer.parseInt(d2);
+            c = Integer.parseInt(d3);
+            d = Integer.parseInt(d4);
+            e = Integer.parseInt(d5);
+            int tot;
+            float avg;
+            //total
+            tot = a+b+c+d+e;
+            total = String.valueOf(tot);
+            t6.setText(total);
+            //average
+            avg = tot / 5;
+            average = String.valueOf(avg);
+            t7.setText(average+"%");
+            //grade
+            if(avg >= 91 && avg <= 100)
+            {
+                t8.setText("A");
+            }
+            else if(avg >= 81 && avg < 91)
+            {
+                t8.setText("B");
+            }
+            else if(avg >= 71 && avg < 81)
+            {
+                t8.setText("C");
+            }
+            else if(avg >= 61 && avg < 71)
+            {
+                t8.setText("D");
+            }
+            else if(avg >= 51 && avg < 61)
+            {
+                t8.setText("E");
+            }
+            else if(avg < 50)
+            {
+                t8.setText("F");
+            }
+            }
+            catch (NumberFormatException e) 
+            {
+                JOptionPane.showMessageDialog(f, "Please enter valid numbers in all fields.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            }
+        });
+        final JButton b2 = new JButton();
+        b2.setText("CLEAR");
+        b2.setBounds(300,300,75,25);
+        b2.setBackground(Color.yellow);
+        b2.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent AE)
+            {
+            t1.setText("");
+            t2.setText("");
+            t3.setText("");
+            t4.setText("");
+            t5.setText("");
+            t6.setText("");
+            t7.setText("");
+            t8.setText("");
+            cm.removeAll();
+            }
+        }
+        );
+
+        f.setTitle("STUDENT GRADE CALCULATOR");
+        f.setLayout(null);
+        f.setVisible(true);
+        f.setEnabled(true);
+        f.setSize(500,400);
+        f.setBackground(Color.GRAY);
+        f.add(l1);
+        f.add(l2);
+        f.add(l3);
+        f.add(l4);
+        f.add(l5);
+        f.add(l6);
+        f.add(l7);
+        f.add(l8);
+        f.add(l9);
+        f.add(l10);
+        f.add(lt);
+        f.add(t1);
+        f.add(t2);
+        f.add(t3);
+        f.add(t4);
+        f.add(t5);
+        f.add(t6);
+        f.add(t7);
+        f.add(t8);
+        f.add(cm);
+        f.add(b1);
+        f.add(b2);
+    }
+}
